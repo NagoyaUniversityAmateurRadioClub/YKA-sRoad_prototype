@@ -18,10 +18,12 @@ public class system : MonoBehaviour {
 public class parameters//定数をまとめておくクラス
 {
     private static float car_acceleration;//車の加速度の定数
+    private static float back_acceleration;//ブレーキ加速度
     private static float car_backspeedlimit;//車の後退速度限界
     private static float gravity;//重力加速度
     private static float natural_brake;//自然減速
     private static float raughroad_rate;//道を外れたときの加速、速度制限
+    private static float rotation_rate;//ハンドル調整
 
     /*
     GameObject obj = new GameObject("Plain");
@@ -30,23 +32,22 @@ public class parameters//定数をまとめておくクラス
     public parameters()
     {
         car_acceleration = 0.1F;
+        back_acceleration = 0.3F;
         car_backspeedlimit = 5.0F;
         gravity = 20.0F;
         natural_brake = 0.05F;
         raughroad_rate = 0.7F;
+        rotation_rate = 1.5F;
     }
 
     public float Get_acceleration()
     {
-        /*        if ()
-                {
-                    return car_acceleration;
-                }
-                else
-                {
-                    return car_acceleration*0.8F;
-                }*/
         return car_acceleration;
+    }
+
+    public float Get_brake()
+    {
+        return back_acceleration;
     }
 
     public float Get_gravity()
@@ -62,5 +63,10 @@ public class parameters//定数をまとめておくクラス
     public float Get_raughroad_rate()
     {
         return raughroad_rate;
+    }
+
+    public float Get_rotation_rate()
+    {
+        return rotation_rate;
     }
 }
