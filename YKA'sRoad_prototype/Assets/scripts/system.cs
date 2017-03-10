@@ -21,17 +21,31 @@ public class parameters//定数をまとめておくクラス
     private static float car_backspeedlimit;//車の後退速度限界
     private static float gravity;//重力加速度
     private static float natural_brake;//自然減速
+    private static float raughroad_rate;//道を外れたときの加速、速度制限
+
+    /*
+    GameObject obj = new GameObject("Plain");
+    road get = obj.AddComponent<road>;*/
 
     public parameters()
     {
-        car_acceleration = 5.0F;
+        car_acceleration = 0.1F;
         car_backspeedlimit = 5.0F;
         gravity = 20.0F;
-        natural_brake = 0.03F;
+        natural_brake = 0.05F;
+        raughroad_rate = 0.7F;
     }
 
     public float Get_acceleration()
     {
+        /*        if ()
+                {
+                    return car_acceleration;
+                }
+                else
+                {
+                    return car_acceleration*0.8F;
+                }*/
         return car_acceleration;
     }
 
@@ -43,5 +57,10 @@ public class parameters//定数をまとめておくクラス
     public float Get_natural_brake()
     {
         return natural_brake;
+    }
+
+    public float Get_raughroad_rate()
+    {
+        return raughroad_rate;
     }
 }
