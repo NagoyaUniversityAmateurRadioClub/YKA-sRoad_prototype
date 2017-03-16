@@ -15,10 +15,11 @@ public class system : MonoBehaviour {
 	}
 }
 
-public class parameters//定数をまとめておくクラス
+public class Parameters//定数をまとめておくクラス
 {
     private static float car_acceleration;//車の加速度の定数
     private static float back_acceleration;//ブレーキ加速度
+    private static float car_forwardlimit;//車の前進速度限界
     private static float car_backspeedlimit;//車の後退速度限界
     private static float gravity;//重力加速度
     private static float natural_brake;//自然減速
@@ -29,11 +30,12 @@ public class parameters//定数をまとめておくクラス
     GameObject obj = new GameObject("Plain");
     road get = obj.AddComponent<road>;*/
 
-    public parameters()
+    public Parameters()
     {
         car_acceleration = 0.1F;
         back_acceleration = 0.3F;
-        car_backspeedlimit = 5.0F;
+        car_forwardlimit = 50.0F;
+        car_backspeedlimit = -5.0F;
         gravity = 20.0F;
         natural_brake = 0.05F;
         raughroad_rate = 0.7F;
@@ -48,6 +50,11 @@ public class parameters//定数をまとめておくクラス
     public float Get_brake()
     {
         return back_acceleration;
+    }
+
+    public float Get_forwardlimit()
+    {
+        return car_forwardlimit;
     }
 
     public float Get_gravity()
