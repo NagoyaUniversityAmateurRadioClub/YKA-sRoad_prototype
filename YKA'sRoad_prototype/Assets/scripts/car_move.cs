@@ -48,13 +48,7 @@ public class car_move : MonoBehaviour
                 speed = f_limit * road_rate;
             }
 
-            if (speed > 1.0F)
-            {
-                transform.Rotate(0, Input.GetAxis("Horizontal") * parameter.Get_rotation_rate(), 0);//ハンドル処理
-            }else if (speed < -1.0F)
-            {
-                transform.Rotate(0, -1.0F*Input.GetAxis("Horizontal") * parameter.Get_rotation_rate(), 0);//ハンドル処理
-            }
+            transform.Rotate(0, Input.GetAxis("Horizontal") * parameter.Get_rotation_rate(speed) * speed, 0);
         }
         moveDirection.y -= parameter.Get_gravity() * Time.deltaTime;//重力による落下処理
         controller.Move(moveDirection * Time.deltaTime);//1ここまでが車の動作処理
