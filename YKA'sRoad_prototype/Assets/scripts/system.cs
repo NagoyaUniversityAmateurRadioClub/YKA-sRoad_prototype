@@ -25,7 +25,7 @@ public class Parameters//定数をまとめておくクラス
     private static float natural_brake;//自然減速
     private static float raughroad_rate;//道を外れたときの加速、速度制限
     private static float rotation_rate;//ハンドル調整
-
+    private static float slip_speed;//膨らむ速度
     /*
     GameObject obj = new GameObject("Plain");
     road get = obj.AddComponent<road>;*/
@@ -39,7 +39,8 @@ public class Parameters//定数をまとめておくクラス
         gravity = 20.0F;
         natural_brake = 0.05F;
         raughroad_rate = 0.7F;
-        rotation_rate = 1.5F;
+        rotation_rate = 0.2F;
+        slip_speed = 25.0F;
     }
 
     public float Get_acceleration()
@@ -72,8 +73,13 @@ public class Parameters//定数をまとめておくクラス
         return raughroad_rate;
     }
 
-    public float Get_rotation_rate()
+    public float Get_rotation_rate(float speed)
     {
-        return rotation_rate;
+        float i = 1F;
+        if(speed>slip_speed)
+        {
+            i = 2F;
+        }
+        return rotation_rate/i;
     }
 }
