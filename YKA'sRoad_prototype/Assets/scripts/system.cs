@@ -32,15 +32,15 @@ public class Parameters//定数をまとめておくクラス
 
     public Parameters()
     {
-        car_acceleration = 5.0F;
+        car_acceleration = 4.0F;
         back_acceleration = 15.0F;
-        car_forwardlimit = 50.0F;
+        car_forwardlimit = 30.0F;
         car_backspeedlimit = -5.0F;
         gravity = 20.0F;
-        natural_brake = 1.0F;
-        raughroad_rate = 0.5F;
-        rotation_rate = 5.0F;
-        slip_speed = 25.0F;
+        natural_brake = 0.7F;
+        raughroad_rate = 0.3F;
+        rotation_rate = 9.0F;
+        slip_speed = 20.0F;
     }
 
     public float Get_acceleration()
@@ -56,6 +56,11 @@ public class Parameters//定数をまとめておくクラス
     public float Get_forwardlimit()
     {
         return car_forwardlimit;
+    }
+
+    public float Get_backlimit()
+    {
+        return car_backspeedlimit;
     }
 
     public float Get_gravity()

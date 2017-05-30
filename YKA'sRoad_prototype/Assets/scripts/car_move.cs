@@ -9,13 +9,14 @@ public class car_move : MonoBehaviour
     private float speed;//車のスピード
     private float road_rate;//道による加速、速度倍率
     private float f_limit;//前進速度限界
-
+    private float b_limit;
     // Use this for initialization
     void Start()
     {
         speed = 0;
         road_rate = parameter.Get_raughroad_rate();
         f_limit = parameter.Get_forwardlimit();
+        b_limit = parameter.Get_backlimit();
     }
 
     // Update is called once per frame
@@ -46,6 +47,11 @@ public class car_move : MonoBehaviour
             if(speed>f_limit*road_rate)
             {
                 speed = f_limit * road_rate;
+            }
+
+            if (speed < b_limit * road_rate)
+            {
+                speed = b_limit * road_rate;
             }
 
             transform.Rotate(0, Input.GetAxis("Horizontal") * parameter.Get_rotation_rate(speed) * speed * Time.deltaTime, 0);
