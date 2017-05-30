@@ -6,9 +6,9 @@ TagManager:
   tags:
   - road
   - goal
-  - point 1
   - point2
   - point3
+  - point1
   layers:
   - Default
   - TransparentFX
