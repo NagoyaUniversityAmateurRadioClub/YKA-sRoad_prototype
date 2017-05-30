@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class car_move : MonoBehaviour
 {
@@ -10,6 +11,15 @@ public class car_move : MonoBehaviour
     private float road_rate;//道による加速、速度倍率
     private float f_limit;//前進速度限界
     private float b_limit;
+    public Text tx_speed;
+    public Text tx_po1;
+    public Text tx_po2;
+    public Text tx_po3;
+    public Text tx_go;
+    public bool is_goal = false;
+    private bool is_flag1 = false;
+    private bool is_flag2 = false;
+    private bool is_flag3 = false;
     // Use this for initialization
     void Start()
     {
@@ -58,6 +68,35 @@ public class car_move : MonoBehaviour
         }
         moveDirection.y -= parameter.Get_gravity() * Time.deltaTime * Time.deltaTime;//重力による落下処理
         controller.Move(moveDirection * Time.deltaTime);//1ここまでが車の動作処理
+
+        tx_speed.text = speed.ToString();//ここからUI
+        tx_po1.text = is_flag1.ToString();
+        tx_po2.text = is_flag2.ToString();
+        tx_po3.text = is_flag3.ToString();
+        tx_go.text = is_goal.ToString();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag=="point1")
+        {
+            is_flag1 = true;
+        }
+        
+        if((other.tag=="point2")&&is_flag1)
+        {
+            is_flag2 = true;
+        }
+
+        if ((other.tag == "point3") && is_flag2)
+        {
+            is_flag3 = true;
+        }
+
+        if ((other.tag == "goal") && is_flag3)
+        {
+            is_goal = true;
+        }
     }
 
     void OnTriggerStay(Collider other)
