@@ -32,14 +32,14 @@ public class Parameters//定数をまとめておくクラス
 
     public Parameters()
     {
-        car_acceleration = 0.1F;
-        back_acceleration = 0.3F;
+        car_acceleration = 5.0F;
+        back_acceleration = 15.0F;
         car_forwardlimit = 50.0F;
         car_backspeedlimit = -5.0F;
         gravity = 20.0F;
-        natural_brake = 0.05F;
-        raughroad_rate = 0.7F;
-        rotation_rate = 0.2F;
+        natural_brake = 1.0F;
+        raughroad_rate = 0.5F;
+        rotation_rate = 5.0F;
         slip_speed = 25.0F;
     }
 
