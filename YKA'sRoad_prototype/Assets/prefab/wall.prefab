@@ -9,46 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1103337391478474}
+  m_RootGameObject: {fileID: 1803940560566068}
   m_IsPrefabParent: 1
---- !u!1 &1103337391478474
+--- !u!1 &1803940560566068
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4748299737107028}
-  - component: {fileID: 33931320637416166}
-  - component: {fileID: 23522977360422546}
-  - component: {fileID: 54769656795521732}
-  - component: {fileID: 64952684394604078}
+  - component: {fileID: 4105044966690094}
+  - component: {fileID: 33230519094851086}
+  - component: {fileID: 65725936070886308}
+  - component: {fileID: 23845828036397524}
+  - component: {fileID: 54016757768874728}
   m_Layer: 0
-  m_Name: curb_road
-  m_TagString: road
+  m_Name: wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4748299737107028
+--- !u!4 &4105044966690094
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1103337391478474}
-  m_LocalRotation: {x: -0.7070956, y: -0.003969691, z: -0.0039695427, w: 0.7070956}
-  m_LocalPosition: {x: 155.3, y: -0, z: 237.56}
-  m_LocalScale: {x: -2.508573, y: -6.7355075, z: 0.000031376145}
+  m_GameObject: {fileID: 1803940560566068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 138.72964, y: 0, z: 178.11353}
+  m_LocalScale: {x: 0.73357916, y: 1.6879872, z: 4.7424207}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -0.643}
---- !u!23 &23522977360422546
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23845828036397524
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1103337391478474}
+  m_GameObject: {fileID: 1803940560566068}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -56,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: fbca5fd5f69b98840badbf570d9f04bd, type: 2}
+  - {fileID: 2100000, guid: 4bbf0d740b755af4ca4314e1a9d0fa1b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
+  m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_SelectedEditorRenderState: 3
@@ -74,19 +74,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33931320637416166
+--- !u!33 &33230519094851086
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1103337391478474}
-  m_Mesh: {fileID: 4300002, guid: 9f2f02f3cd680ee4894d84904a6b11a3, type: 3}
---- !u!54 &54769656795521732
+  m_GameObject: {fileID: 1803940560566068}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54016757768874728
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1103337391478474}
+  m_GameObject: {fileID: 1803940560566068}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -94,19 +94,17 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
---- !u!64 &64952684394604078
-MeshCollider:
+--- !u!65 &65725936070886308
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1103337391478474}
+  m_GameObject: {fileID: 1803940560566068}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 1
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: 9f2f02f3cd680ee4894d84904a6b11a3, type: 3}
+  m_Size: {x: 2.3171997, y: 0.9574072, z: 1}
+  m_Center: {x: 0.6586052, y: -0.02129618, z: 0}

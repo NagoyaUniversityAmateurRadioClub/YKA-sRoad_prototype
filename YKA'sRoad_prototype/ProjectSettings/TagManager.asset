@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - road
+  - goal
+  - point2
+  - point3
+  - point1
   layers:
   - Default
   - TransparentFX
