@@ -26,21 +26,21 @@ public class car_move : MonoBehaviour
         {
             if (Input.GetAxis("Vertical") * speed >= 0)
             {
-                speed += Input.GetAxis("Vertical") * parameter.Get_acceleration() * road_rate;//ボタンを押す間毎フレーム加速度を速度に追加
+                speed += Input.GetAxis("Vertical") * parameter.Get_acceleration() * road_rate*Time.deltaTime;//ボタンを押す間加速度を速度に追加
             }
             else
             {
-                speed += Input.GetAxis("Vertical") * parameter.Get_brake() * road_rate;
+                speed += Input.GetAxis("Vertical") * parameter.Get_brake() * road_rate * Time.deltaTime;
             }
             moveDirection.x = speed * transform.forward.x * road_rate;
             moveDirection.z = speed * transform.forward.z * road_rate;//上の行と併せて車の向いている方向に移動距離を追加
             if (speed > 0)
             {
-                speed -= parameter.Get_natural_brake();//速度がプラスなら毎フレーム減速
+                speed -= parameter.Get_natural_brake() * Time.deltaTime;//速度がプラスなら減速
             }
             else if (speed < 0)
             {
-                speed += parameter.Get_natural_brake();//速度がマイナスなら毎フレーム加速
+                speed += parameter.Get_natural_brake() * Time.deltaTime;//速度がマイナスなら加速
             }
 
             if(speed>f_limit*road_rate)
@@ -48,9 +48,9 @@ public class car_move : MonoBehaviour
                 speed = f_limit * road_rate;
             }
 
-            transform.Rotate(0, Input.GetAxis("Horizontal") * parameter.Get_rotation_rate(speed) * speed, 0);
+            transform.Rotate(0, Input.GetAxis("Horizontal") * parameter.Get_rotation_rate(speed) * speed * Time.deltaTime, 0);
         }
-        moveDirection.y -= parameter.Get_gravity() * Time.deltaTime;//重力による落下処理
+        moveDirection.y -= parameter.Get_gravity() * Time.deltaTime * Time.deltaTime;//重力による落下処理
         controller.Move(moveDirection * Time.deltaTime);//1ここまでが車の動作処理
     }
 
