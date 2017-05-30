@@ -1,19 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class system : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Use this for initialization
+    void Start () {
+
+    }
+
+    
+
+    // Update is called once per frame
+    void Update ()
+    {
+    }
 }
+
 
 public class Parameters//定数をまとめておくクラス
 {
@@ -32,15 +37,15 @@ public class Parameters//定数をまとめておくクラス
 
     public Parameters()
     {
-        car_acceleration = 0.1F;
-        back_acceleration = 0.3F;
-        car_forwardlimit = 50.0F;
+        car_acceleration = 4.0F;
+        back_acceleration = 15.0F;
+        car_forwardlimit = 30.0F;
         car_backspeedlimit = -5.0F;
         gravity = 20.0F;
-        natural_brake = 0.05F;
-        raughroad_rate = 0.7F;
-        rotation_rate = 0.2F;
-        slip_speed = 25.0F;
+        natural_brake = 0.7F;
+        raughroad_rate = 0.3F;
+        rotation_rate = 9.0F;
+        slip_speed = 20.0F;
     }
 
     public float Get_acceleration()
@@ -56,6 +61,11 @@ public class Parameters//定数をまとめておくクラス
     public float Get_forwardlimit()
     {
         return car_forwardlimit;
+    }
+
+    public float Get_backlimit()
+    {
+        return car_backspeedlimit;
     }
 
     public float Get_gravity()
