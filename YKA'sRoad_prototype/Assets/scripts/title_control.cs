@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class title_control : MonoBehaviour {
@@ -16,7 +17,7 @@ public class title_control : MonoBehaviour {
 	void Update () {
         if(Input.anyKeyDown)
         {
-            Application.LoadLevel("main");
+            SceneManager.LoadScene("tutorial");
         }
 
         blinkText.color = new Color(238, 255, 0, Mathf.PingPong(Time.time, 1));
