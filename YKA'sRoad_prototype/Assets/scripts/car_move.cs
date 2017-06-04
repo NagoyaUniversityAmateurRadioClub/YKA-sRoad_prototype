@@ -120,7 +120,7 @@ public class car_move : MonoBehaviour
             rtime = gtime;
             is_goal = false;
             tx_main.text = "goal!!!\n\nyour time\n"+rtime.ToString();
-            tx_time.text = rtime.ToString();
+            tx_time.text = "";
             Invoke("end_toScene", 4.0F);
             swi = 0;
         }
@@ -134,7 +134,7 @@ public class car_move : MonoBehaviour
 
         tx_time.text = (gtime * swi).ToString();//ここからUI
         tx_speed.text = speed.ToString();
-
+        tx_speed.text = "";
     }
 
     void end_toScene()

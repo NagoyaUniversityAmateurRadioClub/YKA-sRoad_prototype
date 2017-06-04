@@ -44,7 +44,7 @@ public class Parameters//定数をまとめておくクラス
         car_backspeedlimit = -5.0F;
         gravity = 20.0F;
         natural_brake = 0.7F;
-        raughroad_rate = 0.3F;
+        raughroad_rate = 0.2F;
         rotation_rate = 5.0F;
         slip_speed = 20.0F+easy;
         curb_speed = 8.5F+easy;
