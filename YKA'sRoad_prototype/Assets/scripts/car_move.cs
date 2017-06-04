@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class car_move : MonoBehaviour
 {
-    private system time = new system();
     private Parameters parameter = new Parameters();//sistemクラスのパラメーターを使うためのオブジェクト
     private Vector3 moveDirection = Vector3.zero;
     private float speed;//車のスピード
@@ -15,7 +14,7 @@ public class car_move : MonoBehaviour
     private float stime;
     private float gtime;
     private float rtime;
-   // public Text tx_speed;
+    //public Text tx_speed;
     public Text tx_main;
     public Text tx_time;
     /*public Text tx_po1;
