@@ -33,6 +33,7 @@ public class Parameters//定数をまとめておくクラス
     private static float rotation_rate;//ハンドル調整
     private static float slip_speed;//膨らむ速度
     private static float curb_speed;//曲がりやすい速度
+    private static float curb_rate;
 
     public Parameters()
     {
@@ -43,10 +44,11 @@ public class Parameters//定数をまとめておくクラス
         car_backspeedlimit = -5.0F;
         gravity = 20.0F;
         natural_brake = 0.7F;
-        raughroad_rate = 0.4F;
+        raughroad_rate = 0.3F;
         rotation_rate = 5.0F;
         slip_speed = 20.0F+easy;
-        curb_speed = 7.0F+easy;
+        curb_speed = 8.5F+easy;
+        curb_rate = 0.6F;
     }
 
     public float Get_acceleration()
@@ -96,5 +98,10 @@ public class Parameters//定数をまとめておくクラス
             i = 2F;
         }
         return rotation_rate/i;
+    }
+
+    public float Get_turn_rate()
+    {
+        return curb_rate;
     }
 }

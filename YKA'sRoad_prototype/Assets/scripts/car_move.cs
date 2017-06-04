@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class car_move : MonoBehaviour
 {
@@ -9,19 +10,15 @@ public class car_move : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private float speed;//車のスピード
     private float road_rate;//道による加速、速度倍率
+    private float turn_rate;
     private float f_limit;//前進速度限界
     private float b_limit;
     private float stime;
     private float gtime;
     private float rtime;
-    //public Text tx_speed;
+    public Text tx_speed;
     public Text tx_main;
     public Text tx_time;
-    /*public Text tx_po1;
-    public Text tx_po2;
-    public Text tx_po3;
-    public Text tx_go;
-    public Text tx_fl;*/
     public bool is_goal;
     private bool is_flag1;
     private bool is_flag2;
@@ -33,6 +30,7 @@ public class car_move : MonoBehaviour
         speed = 0;
         swi = 0;
         road_rate = parameter.Get_raughroad_rate();
+        turn_rate = 1.0F;
         f_limit = parameter.Get_forwardlimit();
         b_limit = parameter.Get_backlimit();
         is_goal = false;
@@ -40,11 +38,11 @@ public class car_move : MonoBehaviour
         is_flag2 = false;
         is_flag3 = false;
         tx_main.text = "それでは\nスタートです";
-        Invoke("tx3", 1.0F);
-        Invoke("tx2", 2.0F);
-        Invoke("tx1", 3.0F);
-        Invoke("txst", 4.0F);
-        Invoke("txcl", 5.0F);
+        Invoke("tx3", 3.0F);
+        Invoke("tx2", 4.0F);
+        Invoke("tx1", 5.0F);
+        Invoke("txst", 6.0F);
+        Invoke("txcl", 7.0F);
     }
 
     void tx3()
@@ -89,8 +87,8 @@ public class car_move : MonoBehaviour
             {
                 speed += Input.GetAxis("Vertical") * parameter.Get_brake() * road_rate * Time.deltaTime * swi;
             }
-            moveDirection.x = speed * transform.forward.x * road_rate;
-            moveDirection.z = speed * transform.forward.z * road_rate;//上の行と併せて車の向いている方向に移動距離を追加
+            moveDirection.x = speed * transform.forward.x;
+            moveDirection.z = speed * transform.forward.z;//上の行と併せて車の向いている方向に移動距離を追加
             if (speed > 0)
             {
                 speed -= parameter.Get_natural_brake() * Time.deltaTime;//速度がプラスなら減速
@@ -110,7 +108,7 @@ public class car_move : MonoBehaviour
                 speed = b_limit * road_rate;
             }
 
-            transform.Rotate(0, Input.GetAxis("Horizontal") * parameter.Get_rotation_rate(speed) * speed *road_rate* Time.deltaTime *swi, 0);
+            transform.Rotate(0, Input.GetAxis("Horizontal") * parameter.Get_rotation_rate(speed)*turn_rate * speed* Time.deltaTime *swi, 0);
         }
         moveDirection.y -= parameter.Get_gravity() * Time.deltaTime * Time.deltaTime;//重力による落下処理
         controller.Move(moveDirection * Time.deltaTime);//1ここまでが車の動作処理
@@ -121,21 +119,27 @@ public class car_move : MonoBehaviour
         {
             rtime = gtime;
             is_goal = false;
-            tx_main.text = "goal!!!\n"+rtime.ToString();
+            tx_main.text = "goal!!!\n\nyour time\n"+rtime.ToString();
+            tx_time.text = rtime.ToString();
+            Invoke("end_toScene", 4.0F);
+            swi = 0;
         }
 
         if(gtime>300)
         {
             tx_main.text = "Time over!!";
+            Invoke("end_toScene", 4.0F);
+            swi = 0;
         }
 
-       /* tx_speed.text = speed.ToString();//ここからUI
-        tx_po1.text = is_flag1.ToString();
-        tx_po2.text = is_flag2.ToString();
-        tx_po3.text = is_flag3.ToString();
-        tx_go.text = is_goal.ToString();*/
-        tx_time.text = (gtime * swi).ToString();
+        tx_time.text = (gtime * swi).ToString();//ここからUI
+        tx_speed.text = speed.ToString();
 
+    }
+
+    void end_toScene()
+    {
+        SceneManager.LoadScene("end");
     }
 
     void OnTriggerEnter(Collider line)
@@ -166,27 +170,9 @@ public class car_move : MonoBehaviour
         if (other.tag == "road")
         {
             road_rate = 1.0F;
+            turn_rate = 1.0F;
         }
-
-        if (other.tag == "point1")
-        {
-            is_flag1 = true;
-        }
-
-        if ((other.tag == "point2") && is_flag1)
-        {
-            is_flag2 = true;
-        }
-
-        if ((other.tag == "point3") && is_flag2)
-        {
-            is_flag3 = true;
-        }
-
-        if ((other.tag == "goal") && is_flag3)
-        {
-            is_goal = true;
-        }
+        
     }
     
     void OnTriggerExit(Collider other)
@@ -194,6 +180,7 @@ public class car_move : MonoBehaviour
         if (other.tag == "road")
         {
             road_rate = parameter.Get_raughroad_rate();
+            turn_rate = parameter.Get_turn_rate();
         }
     }
 }
