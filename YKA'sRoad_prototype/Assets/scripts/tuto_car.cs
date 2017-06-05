@@ -45,7 +45,7 @@ public class tuto_car : MonoBehaviour
         Invoke("tx3", 3.0F);
         Invoke("tx2", 3.0F);
         Invoke("tx1", 8.0F);
-        Invoke("txcl", 11.0F);
+        Invoke("txcls", 11.0F);
     }
 
     void tx3()
@@ -61,13 +61,9 @@ public class tuto_car : MonoBehaviour
     void tx1()
     {
         tx_tmain.text = "加速してください";
-        swi = 1;
     }
 
-    void txcl()
-    {
-        tx_tmain.text = "";
-    }
+
 
     void txcls()
     {

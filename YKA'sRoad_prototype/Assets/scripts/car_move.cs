@@ -62,9 +62,9 @@ public class car_move : MonoBehaviour
 
     void txst()
     {
+        stime = Time.realtimeSinceStartup;
         tx_main.text = "start!!";
         swi = 1;
-        stime = Time.realtimeSinceStartup;
     }
 
     void txcl()
@@ -115,22 +115,25 @@ public class car_move : MonoBehaviour
 
         gtime = Time.realtimeSinceStartup - stime;
 
-        if (is_goal)
+        if (swi > 0)
         {
-            rtime = gtime;
-            is_goal = false;
-            tx_main.text = "goal!!!\n\nyour time\n"+rtime.ToString();
-            tx_time.text = "";
-            Invoke("end_toScene", 4.0F);
-            swi = 0;            
-        }
+            if (is_goal)
+            {
+                rtime = gtime;
+                is_goal = false;
+                tx_main.text = "goal!!!\n\nyour time\n" + rtime.ToString();
+                tx_time.text = "";
+                Invoke("end_toScene", 4.0F);
+                swi = 0;
+            }
 
-        if(gtime>300)
-        {
-            tx_main.text = "Time over!!";
-            Invoke("end_toScene", 4.0F);
-            swi = 0;
-            rtime = 300;
+            if (gtime > 300)
+            {
+                tx_main.text = "Time over!!";
+                Invoke("end_toScene", 4.0F);
+                swi = 0;
+                rtime = 300;
+            }
         }
 
         tx_time.text = (gtime * swi).ToString();//ここからUI
