@@ -15,11 +15,11 @@ public class car_move : MonoBehaviour
     private float b_limit;
     private float stime;
     private float gtime;
-    private float rtime;
+    public static float rtime;
     public Text tx_speed;
     public Text tx_main;
     public Text tx_time;
-    public bool is_goal;
+    private bool is_goal;
     private bool is_flag1;
     private bool is_flag2;
     private bool is_flag3;
@@ -122,7 +122,7 @@ public class car_move : MonoBehaviour
             tx_main.text = "goal!!!\n\nyour time\n"+rtime.ToString();
             tx_time.text = "";
             Invoke("end_toScene", 4.0F);
-            swi = 0;
+            swi = 0;            
         }
 
         if(gtime>300)
@@ -130,11 +130,19 @@ public class car_move : MonoBehaviour
             tx_main.text = "Time over!!";
             Invoke("end_toScene", 4.0F);
             swi = 0;
+            rtime = 300;
         }
 
         tx_time.text = (gtime * swi).ToString();//ここからUI
         tx_speed.text = speed.ToString();
         tx_speed.text = "";
+
+        
+    }
+
+    public static float Get_thisScore()
+    {
+        return rtime;
     }
 
     void end_toScene()

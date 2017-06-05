@@ -15,6 +15,11 @@ public class title_control : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown("escape"))
+        {
+            SceneManager.LoadScene("setup");
+        }
+
         if(Input.anyKeyDown)
         {
             SceneManager.LoadScene("tutorial");
