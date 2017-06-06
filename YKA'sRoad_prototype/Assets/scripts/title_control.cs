@@ -8,9 +8,10 @@ using UnityEngine.SceneManagement;
 public class title_control : MonoBehaviour {
 
     public Text blinkText;
+    AudioSource aud;
 	// Use this for initialization
 	void Start () {
-		
+        aud = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -22,9 +23,15 @@ public class title_control : MonoBehaviour {
 
         if(Input.anyKeyDown)
         {
-            SceneManager.LoadScene("tutorial");
+            aud.Play();
+            Invoke("Ltuto", 1.0F);
         }
 
         blinkText.color = new Color(238, 255, 0, Mathf.PingPong(Time.time, 1));
 	}
+
+    void Ltuto()
+    {
+        SceneManager.LoadScene("tutorial");
+    }
 }
