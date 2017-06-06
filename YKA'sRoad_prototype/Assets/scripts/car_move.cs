@@ -24,6 +24,8 @@ public class car_move : MonoBehaviour
     private bool is_flag2;
     private bool is_flag3;
     private int swi;
+    AudioSource audioSource;
+
     // Use this for initialization
     void Start()
     {
@@ -37,6 +39,7 @@ public class car_move : MonoBehaviour
         is_flag1 = false;
         is_flag2 = false;
         is_flag3 = false;
+        audioSource = gameObject.GetComponent<AudioSource>();
         tx_main.text = "それでは\nスタートです";
         Invoke("tx3", 3.0F);
         Invoke("tx2", 4.0F);
@@ -48,6 +51,7 @@ public class car_move : MonoBehaviour
     void tx3()
     {
         tx_main.text = "3";
+        audioSource.Play();
     }
 
     void tx2()
