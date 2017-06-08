@@ -26,6 +26,7 @@ public class setup : MonoBehaviour
 
         if (Input.anyKeyDown)
         {
+            SteamVR.instance.hmd.ResetSeatedZeroPose();
             SceneManager.LoadScene("title");
         }
 		

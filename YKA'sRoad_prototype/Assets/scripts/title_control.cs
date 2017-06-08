@@ -24,6 +24,7 @@ public class title_control : MonoBehaviour {
         if(Input.anyKeyDown)
         {
             aud.Play();
+            SteamVR.instance.hmd.ResetSeatedZeroPose();
             Invoke("Ltuto", 1.0F);
         }
 
