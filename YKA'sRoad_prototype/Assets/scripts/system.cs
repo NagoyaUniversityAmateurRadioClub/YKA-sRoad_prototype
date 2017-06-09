@@ -39,7 +39,7 @@ public class Parameters//定数をまとめておくクラス
     {
         easy = 0F;
         car_acceleration = 4.0F;
-        back_acceleration = 15.0F;
+        back_acceleration = 10.0F;
         car_forwardlimit = 30.0F;
         car_backspeedlimit = -5.0F;
         gravity = 20.0F;
@@ -47,7 +47,7 @@ public class Parameters//定数をまとめておくクラス
         raughroad_rate = 0.2F;
         rotation_rate = 5.0F;
         slip_speed = 20.0F+easy;
-        curb_speed = 8.5F+easy;
+        curb_speed = 10.0F+easy;
         curb_rate = 0.6F;
     }
 
